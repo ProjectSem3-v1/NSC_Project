@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\NSC_Project.props" />
+</Project>
