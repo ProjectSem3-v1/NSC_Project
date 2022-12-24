@@ -17,7 +17,10 @@ namespace NSC_Project.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<Ticket>()
+                .HasOne(t => t.TicketDetail)
+                .WithOne(t => t.Ticket)
+                .HasForeignKey<TicketDetail>(td => td.TicketId);
         }
 
         public DbSet<NSC_Project.Models.Customer> Customer { get; set; } = default!;
@@ -29,6 +32,7 @@ namespace NSC_Project.Data
         public DbSet<NSC_Project.Models.FlightRoute> FlightRoute { get; set; } = default!;
         public DbSet<NSC_Project.Models.Plane> Plane { get; set; } = default!;
         public DbSet<NSC_Project.Models.Ticket> Ticket { get; set; } = default!;
+        public DbSet<NSC_Project.Models.TicketDetail> TicketDetail { get; set; } = default!;
         public DbSet<NSC_Project.Models.TicketClass> TicketClass { get; set; } = default!;
         public DbSet<NSC_Project.Models.Trip> Trip { get; set; } = default!;
 

@@ -222,13 +222,19 @@ namespace NSCProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BillId")
+                    b.Property<int?>("BillId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<int>("FareId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Solded")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("TicketDetailId")
                         .HasColumnType("int");
 
                     b.Property<int>("TripId")
@@ -262,6 +268,35 @@ namespace NSCProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TicketClass");
+                });
+
+            modelBuilder.Entity("NSC_Project.Models.TicketDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BillId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BillId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("TicketId")
+                        .IsUnique();
+
+                    b.ToTable("TicketDetail");
                 });
 
             modelBuilder.Entity("NSC_Project.Models.Trip", b =>
@@ -355,17 +390,13 @@ namespace NSCProject.Migrations
 
             modelBuilder.Entity("NSC_Project.Models.Ticket", b =>
                 {
-                    b.HasOne("NSC_Project.Models.Bill", "Bill")
+                    b.HasOne("NSC_Project.Models.Bill", null)
                         .WithMany("Ticket")
-                        .HasForeignKey("BillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BillId");
 
-                    b.HasOne("NSC_Project.Models.Customer", "Customer")
+                    b.HasOne("NSC_Project.Models.Customer", null)
                         .WithMany("Tickets")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.HasOne("NSC_Project.Models.Fare", "Fare")
                         .WithMany("Tickets")
@@ -379,13 +410,36 @@ namespace NSCProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Fare");
+
+                    b.Navigation("Trip");
+                });
+
+            modelBuilder.Entity("NSC_Project.Models.TicketDetail", b =>
+                {
+                    b.HasOne("NSC_Project.Models.Bill", "Bill")
+                        .WithMany()
+                        .HasForeignKey("BillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NSC_Project.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NSC_Project.Models.Ticket", "Ticket")
+                        .WithOne("TicketDetail")
+                        .HasForeignKey("NSC_Project.Models.TicketDetail", "TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Bill");
 
                     b.Navigation("Customer");
 
-                    b.Navigation("Fare");
-
-                    b.Navigation("Trip");
+                    b.Navigation("Ticket");
                 });
 
             modelBuilder.Entity("NSC_Project.Models.Trip", b =>
@@ -445,6 +499,12 @@ namespace NSCProject.Migrations
             modelBuilder.Entity("NSC_Project.Models.Plane", b =>
                 {
                     b.Navigation("Trips");
+                });
+
+            modelBuilder.Entity("NSC_Project.Models.Ticket", b =>
+                {
+                    b.Navigation("TicketDetail")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("NSC_Project.Models.TicketClass", b =>
