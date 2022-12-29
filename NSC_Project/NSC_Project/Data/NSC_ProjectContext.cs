@@ -17,10 +17,7 @@ namespace NSC_Project.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Ticket>()
-                .HasOne(t => t.TicketDetail)
-                .WithOne(t => t.Ticket)
-                .HasForeignKey<TicketDetail>(td => td.TicketId);
+           
         }
 
         public DbSet<NSC_Project.Models.Customer> Customer { get; set; } = default!;

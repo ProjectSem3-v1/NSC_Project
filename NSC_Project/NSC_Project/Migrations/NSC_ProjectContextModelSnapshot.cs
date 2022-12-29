@@ -234,9 +234,6 @@ namespace NSCProject.Migrations
                     b.Property<bool>("Solded")
                         .HasColumnType("bit");
 
-                    b.Property<int>("TicketDetailId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TripId")
                         .HasColumnType("int");
 
@@ -293,8 +290,7 @@ namespace NSCProject.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.HasIndex("TicketId")
-                        .IsUnique();
+                    b.HasIndex("TicketId");
 
                     b.ToTable("TicketDetail");
                 });
@@ -430,8 +426,8 @@ namespace NSCProject.Migrations
                         .IsRequired();
 
                     b.HasOne("NSC_Project.Models.Ticket", "Ticket")
-                        .WithOne("TicketDetail")
-                        .HasForeignKey("NSC_Project.Models.TicketDetail", "TicketId")
+                        .WithMany("TicketDetails")
+                        .HasForeignKey("TicketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -503,8 +499,7 @@ namespace NSCProject.Migrations
 
             modelBuilder.Entity("NSC_Project.Models.Ticket", b =>
                 {
-                    b.Navigation("TicketDetail")
-                        .IsRequired();
+                    b.Navigation("TicketDetails");
                 });
 
             modelBuilder.Entity("NSC_Project.Models.TicketClass", b =>

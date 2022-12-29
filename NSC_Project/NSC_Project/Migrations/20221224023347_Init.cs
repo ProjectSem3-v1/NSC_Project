@@ -218,7 +218,6 @@ namespace NSCProject.Migrations
                     Solded = table.Column<bool>(type: "bit", nullable: false),
                     FareId = table.Column<int>(type: "int", nullable: false),
                     TripId = table.Column<int>(type: "int", nullable: false),
-                    TicketDetailId = table.Column<int>(type: "int", nullable: false),
                     BillId = table.Column<int>(type: "int", nullable: true),
                     CustomerId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -279,7 +278,7 @@ namespace NSCProject.Migrations
                         column: x => x.TicketId,
                         principalTable: "Ticket",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -340,8 +339,7 @@ namespace NSCProject.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_TicketDetail_TicketId",
                 table: "TicketDetail",
-                column: "TicketId",
-                unique: true);
+                column: "TicketId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trip_AirlineCompanyId",

@@ -13,8 +13,7 @@
         public int TripId { get; set; }
         public Trip Trip { get; set; }
         //Ticket detail
-        public int TicketDetailId { get; set; }
-        public TicketDetail TicketDetail { get; set; }
+        public ICollection<TicketDetail> TicketDetails { get; set; }
         
     }
 }
