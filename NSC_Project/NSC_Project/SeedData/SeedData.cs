@@ -244,10 +244,6 @@ namespace NSC_Project.SeedData
                         Logo = ""
                     }
                 );
-
-
-
-
             }
         }
     }
