@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9Qv3hOr5h9XyiabawBTUvn3ikOeOgD9boI32OZB/cy4=",
+  "Hash": "nP2OXyDzG6aJx8Xrz6Q6un2UFqomA6kDuv1P7vH/S+w=",
   "Source": "NSC_Project",
   "BasePath": "_content/NSC_Project",
   "Mode": "Default",
@@ -68,23 +68,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\animate.min.css"
     },
     {
-      "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\css\\bootstrap-datepicker.min.css",
-      "SourceId": "NSC_Project",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\",
-      "BasePath": "_content/NSC_Project",
-      "RelativePath": "assets/css/bootstrap-datepicker.min.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\css\\bootstrap-datepicker.min.css"
-    },
-    {
       "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\css\\bootstrap.min.css",
       "SourceId": "NSC_Project",
       "SourceType": "Discovered",
@@ -100,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\css\\bootstrap.min.css"
+    },
+    {
+      "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\css\\bootstrap-datepicker.min.css",
+      "SourceId": "NSC_Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\",
+      "BasePath": "_content/NSC_Project",
+      "RelativePath": "assets/css/bootstrap-datepicker.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\bootstrap-datepicker.min.css"
     },
     {
       "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\css\\default.css",
@@ -1632,23 +1632,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\images\\offer_img05.jpg"
     },
     {
-      "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\img\\logo\\logo_02.png",
-      "SourceId": "NSC_Project",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\",
-      "BasePath": "_content/NSC_Project",
-      "RelativePath": "assets/img/logo/logo_02.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\logo\\logo_02.png"
-    },
-    {
       "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\img\\logo\\logo.png",
       "SourceId": "NSC_Project",
       "SourceType": "Discovered",
@@ -1666,12 +1649,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\logo\\logo.png"
     },
     {
-      "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\js\\bootstrap-datepicker.min.js",
+      "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\img\\logo\\logo_02.png",
       "SourceId": "NSC_Project",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\",
       "BasePath": "_content/NSC_Project",
-      "RelativePath": "assets/js/bootstrap-datepicker.min.js",
+      "RelativePath": "assets/img/logo/logo_02.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1680,7 +1663,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\js\\bootstrap-datepicker.min.js"
+      "OriginalItemSpec": "wwwroot\\assets\\img\\logo\\logo_02.png"
     },
     {
       "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\js\\bootstrap.min.js",
@@ -1698,6 +1681,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\bootstrap.min.js"
+    },
+    {
+      "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\js\\bootstrap-datepicker.min.js",
+      "SourceId": "NSC_Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\",
+      "BasePath": "_content/NSC_Project",
+      "RelativePath": "assets/js/bootstrap-datepicker.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\bootstrap-datepicker.min.js"
     },
     {
       "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\js\\imagesloaded.pkgd.min.js",
@@ -1732,23 +1732,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\isotope.pkgd.min.js"
-    },
-    {
-      "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\js\\jquery-ui.min.js",
-      "SourceId": "NSC_Project",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\",
-      "BasePath": "_content/NSC_Project",
-      "RelativePath": "assets/js/jquery-ui.min.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\js\\jquery-ui.min.js"
     },
     {
       "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\js\\jquery.appear.js",
@@ -1800,6 +1783,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\jquery.odometer.min.js"
+    },
+    {
+      "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\js\\jquery-ui.min.js",
+      "SourceId": "NSC_Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\",
+      "BasePath": "_content/NSC_Project",
+      "RelativePath": "assets/js/jquery-ui.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\jquery-ui.min.js"
     },
     {
       "Identity": "D:\\Github\\ProjectSem3-v1\\NSC_Project\\NSC_Project\\NSC_Project\\wwwroot\\assets\\js\\main.js",

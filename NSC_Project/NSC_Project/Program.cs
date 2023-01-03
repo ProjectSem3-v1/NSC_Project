@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NSC_Project.Data;
+using NSC_Project.SeedData;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<NSC_ProjectContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("NSC_ProjectContext") ?? throw new InvalidOperationException("Connection string 'NSC_ProjectContext' not found.")));
@@ -9,7 +11,12 @@ builder.Services.AddDbContext<NSC_ProjectContext>(options =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-
+//Seeddata
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.Initialize(services);
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
