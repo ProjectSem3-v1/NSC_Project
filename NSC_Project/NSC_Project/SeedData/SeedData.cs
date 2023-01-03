@@ -267,7 +267,7 @@ namespace NSC_Project.Seeding
                     );
                 context.SaveChanges();
 
-                context.AddRange(
+                context.AirlineCompany.AddRange(
                     new AirlineCompany
                     {
                         Name = "Vietjet Air",
@@ -284,6 +284,136 @@ namespace NSC_Project.Seeding
                         Logo = ""
                     }
                 );
+                context.SaveChanges();
+
+                context.Trip.AddRange(
+                        new Trip
+                        {
+                            StartDate = DateTime.Now,
+                            FinishDate = DateTime.Now,
+                            FlightTime = 2,
+                            Status = 0,
+                            PlaneId = 1,
+                            FlightRouteId = 1,
+                            AirlineCompanyId = 1
+                        }
+                    );
+                context.SaveChanges();
+
+                context.Plane.AddRange(
+                        new Plane
+                        {
+                            Name = "Boeing 787"
+                        },
+                        new Plane
+                        {
+                            Name = "Airbus A350"
+                        },
+                        new Plane
+                        {
+                            Name = "Airbus A330"
+                        },
+                        new Plane
+                        {
+                            Name = "Airbus A321"
+                        },
+                        new Plane
+                        {
+                            Name = "Boeing 737 MAX 200"
+                        },
+                        new Plane
+                        {
+                            Name = "Airbus A321"
+                        },
+                        new Plane
+                        {
+                            Name = "Airbus A321 neo"
+                        }
+                    );
+                context.SaveChanges();
+                context.FlightRoute.AddRange(
+                        new FlightRoute
+                        {
+                            AirportFromId = 1,
+                            AirportToId = 2,
+                        }
+                    );
+                context.SaveChanges();
+                context.TicketClass.AddReange(
+                        new TicketClass
+                        {
+                            Name = "Eco"
+                        },
+                        new TicketClass
+                        {
+                            Name = "Economy Saver"
+                        },
+                        new TicketClass
+                        {
+                            Name = "Deluxe"
+                        },
+                        new TicketClass
+                        {
+                            Name = "SkyBoss"
+                        }
+                    );
+                context.SaveChanges();
+
+                context.Fare.AddReange(
+                        new Fare
+                        {
+                            Qty = 50,
+                            Price = 1.270.120,
+                            TripId= 1,
+                            TicketClassId= 1
+                        },
+                         new Fare
+                         {
+                             Qty = 50,
+                             Price = 1.670.120,
+                             TripId = 1,
+                             TicketClassId = 1
+                         },
+                          new Fare
+                          {
+                              Qty = 50,
+                              Price = 3.270.120,
+                              TripId = 1,
+                              TicketClassId = 1
+                          },
+                           new Fare
+                           {
+                               Qty = 50,
+                               Price = 5.270.120,
+                               TripId = 1,
+                               TicketClassId = 1
+                           }
+                    );
+                context.SaveChanges();
+
+                context.Ticket.AddReange(
+                        new Ticket
+                        {
+                            FareId= 1,
+                            TripId= 1
+                        }
+                        new Ticket
+                        {
+                            FareId = 2,
+                            TripId = 1
+                        }
+                        new Ticket
+                        {
+                            FareId = 3,
+                            TripId = 1
+                        }
+                        new Ticket
+                        {
+                            FareId = 4,
+                            TripId = 1
+                        }
+                    );
+                context.SaveChanges();
             }
         }
     }
