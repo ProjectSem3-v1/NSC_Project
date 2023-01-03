@@ -11,8 +11,8 @@
         public string Phone { get; set; }
         public string Sex { get; set; }
         //Hóa đơn
-        public ICollection<Bill> Bills { get; set; }
+        public ICollection<Bill>? Bills { get; set; }
         //Vé chuyến bay
-        public ICollection<Ticket> Tickets { get; set; }
+        public ICollection<Ticket>? Tickets { get; set; }
     }
 }

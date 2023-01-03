@@ -10,18 +10,18 @@
         public double FlightTime { get; set; }
         public int Status { get; set; }
         //Máy bay
-        public Plane Plane { get; set; }
+        public Plane? Plane { get; set; }
         public int PlaneId { get; set; }
         //Tuyến bay
-        public FlightRoute FlightRoute { get; set; }
+        public FlightRoute? FlightRoute { get; set; }
         public int FlightRouteId { get; set; }
         //Hãng bay
-        public AirlineCompany AirlineCompany { get; set; }
+        public AirlineCompany? AirlineCompany { get; set; }
         public int AirlineCompanyId { get; set; }
         //Vé chuyến bay
-        public ICollection<Ticket> Tickets { get; set; } 
+        public ICollection<Ticket>? Tickets { get; set; } 
         //Giá vé chuyến bay
-        public ICollection<Fare> Fares { get; set; }
+        public ICollection<Fare>? Fares { get; set; }
 
     }
 }

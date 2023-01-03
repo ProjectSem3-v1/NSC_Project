@@ -6,14 +6,14 @@
         public int Id { get; set; }
         public bool Solded { get; set; } = false;
         //Giá vé
-        public Fare Fare { get; set; }
+        public Fare? Fare { get; set; }
         public int FareId { get; set; }
 
         //Chuyến Bay
         public int TripId { get; set; }
         public Trip Trip { get; set; }
         //Ticket detail
-        public ICollection<TicketDetail> TicketDetails { get; set; }
+        public ICollection<TicketDetail>? TicketDetails { get; set; }
         
     }
 }

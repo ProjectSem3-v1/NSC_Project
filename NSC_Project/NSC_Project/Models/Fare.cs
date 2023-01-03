@@ -7,13 +7,13 @@
         public int Qty { get; set; }
         public double Price { get; set; }
         //Chuyến bay
-        public Trip Trip { get; set; }
+        public Trip? Trip { get; set; }
         public int TripId { get; set; }
         //Hạng vé
-        public TicketClass TicketClass { get; set; }
+        public TicketClass? TicketClass { get; set; }
         public int TicketClassId { get; set; }
         //Vé chuyến bay
-        public ICollection<Ticket> Tickets { get; set; }  
+        public ICollection<Ticket>? Tickets { get; set; }  
         
 
 
