@@ -1,0 +1,63 @@
+﻿@model IEnumerable<NSC_Project.Models.Bill>
+@using Microsoft.AspNetCore.Http
+@using NSC_Project.Extentions
+@using NSC_Project.Extentions.Models
+
+@{
+    var mySessionUser = Context.Session.GetObjectFromJson<UserSession>("Client");
+
+}
+<main>
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area breadcrumb-bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="title">History Bills</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">History Bills</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+    <div class="container"  style="margin-top:32px">
+        @foreach (var bill in Model)
+        {
+            <div class="mt-4" style="background: #fff;border-radius: 15px;padding: 35px;">
+
+                <h4 class="mb-4">Thông tin hóa đơn #@bill.Id : @bill.CreatedAt.ToString("dd/MM/yyyy hh:mm")</h4>
+                <p>Chuyến bay : Một chiều</p>
+                <p>Sân bay đi : @bill.TicketDetails.First().Ticket.Trip.FlightRoute.AirportFrom.Address </p>
+                <p>Sân bay đến : @bill.TicketDetails.First().Ticket.Trip.FlightRoute.AirportTo.Address </p>
+                <p>Hãng vé : @bill.TicketDetails.First().Ticket.Trip.AirlineCompany.Name</p>
+                <p>Hạng vé : @bill.TicketDetails.First().Ticket.Fare.TicketClass.Name</p>
+                <p>Số lượng hành khách: @bill.TicketDetails.Count()</p>
+                <p>Giá vé : @bill.TicketDetails.First().Ticket.Fare.Price.ToString("#,###") đ / vé</p>
+                <p>Tổng thanh toán : @(@bill.Subtotal.ToString("#,###")) đ </p>
+                <p>Ngày xuất vé : @bill.CreatedAt.ToString("dd/MM/yyyy")</p>
+                <p>Xác nhận hóa đơn : @mySessionUser.Email</p>
+                <p>Danh sách hành khách</p>
+                <ol>
+                    @foreach (var ticketDetail in bill.TicketDetails)
+                    {
+                        <li style="list-style: auto">
+                            <p>Họ và tên : @ticketDetail.Customer.FullName</p>
+                            <p>CCCD : @ticketDetail.Customer.CMND</p>
+                            <p>Ngày Sinh : @ticketDetail.Customer.DOB.ToString("dd/MM/yyyy")</p>
+                            
+                        </li>
+                    }
+                </ol>
+                
+            </div>
+        }
+    </div>
+    
+</main>

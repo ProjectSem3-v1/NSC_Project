@@ -1,0 +1,165 @@
+﻿@model NSC_Project.Models.ViewModel.TripViewModel
+@using NSC_Project.Models.ViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- booking-area -->
+<div class="booking-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="booking-wrap">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="bOOKing-tab" data-bs-toggle="tab" data-bs-target="#bOOKing-tab-pane" type="button" role="tab" aria-controls="bOOKing-tab-pane" aria-selected="true"><i class="flaticon-flight"></i>air BOOKing</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="bOOKing-tab-pane" role="tabpanel" aria-labelledby="bOOKing-tab" tabindex="0">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="tab-content-wrap">
+                                        <form class="booking-form" id="form-trip">
+                                            <ul>
+                                                <li>
+                                                    <div class="form-grp">
+                                                        <select id="airportFrom" asp-for="AirportFromId" class="form-select" aria-label="Default select example">
+                                                            @foreach (var item in Model.airportFroms)
+                                                            {
+                                                                <option value="@item.Id">@item.Address</option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-grp">
+                                                        <select id="airporTo" asp-for="AirportToId" class="form-select" aria-label="Default select example">
+                                                           @foreach (var item in Model.airportTos)
+                                                            {
+                                                                <option value="@item.Id">@item.Address</option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-grp select">
+                                                        <label for="shortBy">Ticket Classes</label>
+                                                        <select id="ticketClass" asp-for="TicketClassId" class="form-select" aria-label="Default select example">
+                                                           @foreach (var item in Model.ticketClasses)
+                                                            {
+                                                                <option value="@item.Id">@item.Name</option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-grp date">
+                                                        <ul>
+                                                            <li>
+                                                                <label for="shortBy">Depart</label>
+                                                                <input type="date" asp-for="TicketDate">
+                                                            </li>
+                                                           
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="form-grp economy">
+                                                        <label for="text">Passenger</label>
+                                                        <select id="passenger" asp-for="people" class="form-select" aria-label="Default select example">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            
+                                                        </select>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="content-bottom">
+                                                <button class="btn" type="submit">Show Flights <i class="flaticon-flight-1"></i></a>
+                                            </div>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- booking-area-end -->
+
+@if(Model.tickets != null)
+{
+    <!-- booking-list-area -->
+    <div class="booking-list-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-27 order-2 order-xl-0">
+                    <aside class="booking-sidebar">
+                        <div class="widget filters">
+                            <button class="btn" form="form-trip" type="submit">filters</button>
+
+                            <div class="filters-wrap">
+                                <h2 class="widget-title">Price Range</h2>
+                                <div class="price_filter">
+                                    <div id="slider-range"></div>
+                                    <div class="price_slider_amount">
+                                        <span>Price :</span>
+                                        <input type="text" id="amount" name="price"  placeholder="Add Your Price">
+                                        <input asp-for="priceMin" id="amountMin" form="form-trip" hidden>
+                                        <input asp-for="priceMax" id="amountMax" form="form-trip" hidden>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <h2 class="widget-title">Airlines</h2>
+                            <select asp-for="AirlineCompanyId" class="form-select" form="form-trip">
+                                @foreach (var item in Model.airlineCompanies)
+                                {
+                                    <option value="@item.Id"><i class="flaticon-flight"></i> @item.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="widget">
+                            
+                            <h2 class="widget-title">Departure Time</h2>
+                            <ul class="departure-wrap">
+                                <li>
+                                    <label for="morning" class="label-time @(Model.timeStartId == 0 ? "label-time-active" : "" )"><i class="flaticon-sunrise"></i>00:00 - 05:59</label>
+                                </li>
+                                <li><label for="noon" class="label-time @(Model.timeStartId == 1 ? "label-time-active" : "" )"><i class="flaticon-sunny"></i>06:00 - 11:59</label></li>
+                                <li><label for="afternoon" class="label-time @(Model.timeStartId == 2 ? "label-time-active" : "" )"><i class="flaticon-sunset"></i>12:00 - 17:59</label></li>
+                                <li><label for="night" class="label-time @(Model.timeStartId == 3 ? "label-time-active" : "" )"><i class="flaticon-crescent-moon"></i>18:00 - 23:59</label></li>
+                            </ul>
+                            <input  form="form-trip" id="morning" asp-for="timeStartId" type="radio" value="0" hidden>
+                            <input  form="form-trip" id="noon" asp-for="timeStartId" type="radio" value="1" hidden>
+                            <input form="form-trip" id="afternoon" asp-for="timeStartId" type="radio" value="2" hidden>
+                            <input form="form-trip" id="night" asp-for="timeStartId" type="radio" value="3" hidden>
+                        </div>
+                        
+                        
+                    </aside>
+                </div>
+                <div class="col-73">
+                    @foreach (var item in Model.tickets)
+                    {
+                        <partial name="TicketPartial" model="new CheckoutViewModel{ ticket = item,people = Model.people }"></partial>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- booking-list-area-end -->
+}
+
+

@@ -1,0 +1,532 @@
+﻿@model NSC_Project.Models.ViewModel.CheckoutViewModel
+@using Microsoft.AspNetCore.Http
+@using NSC_Project.Extentions
+@using NSC_Project.Extentions.Models
+
+@{
+    var mySessionUser = Context.Session.GetObjectFromJson<UserSession>("Client");
+}
+<main>
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area breadcrumb-bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="title">Booking Details</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Booking Details</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+    <!-- customer-details-area -->
+    <section class="customer-details-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="customer-details-content">
+                        <div class="icon">
+                            <img src="assets/img/brand/@Model.ticket.Trip.AirlineCompany.Logo" alt="">
+                        </div>
+                        <div class="content">
+                            <h2 class="title">Customer Details: Please fill in with valid information.</h2>
+                            <div class="customer-progress-wrap">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="customer-progress-step">
+                                    <ul>
+                                        <li>
+                                            <span>1</span>
+                                            <p>Guest Information</p>
+                                        </li>
+                                        <li>
+                                            <span>2</span>
+                                            <p>Payment</p>
+                                        </li>
+                                        <li>
+                                            <span>3</span>
+                                            <p>Confirmation</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- customer-details-area-end -->
+    <!-- booking-details-area -->
+    
+    <section class="booking-details-area">
+    <div class="container">
+        <div class="row justify-content-center">
+
+                <div class="col-73">
+                    <form asp-action="Checkout" method="post" id="form-buy">
+                        <input asp-for="ticket.Id" hidden/>
+                        <input asp-for="ticket.Id" hidden/>
+                        <input asp-for="people" hidden/>
+                        <div class="primary-contact">
+                            <i class="fa-regular fa-user"></i>
+                            <h2 class="title">Passenger 1</h2>
+                        </div>
+                        <div class="booking-details-wrap">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-grp">
+                                        <div class="icon">
+                                            <i class="flaticon-user-1"></i>
+                                        </div>
+                                        <div class="form">
+                                            <input type="text" placeholder="Full Name" asp-for="customer_1.FullName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-grp">
+                                        <div class="icon">
+                                            <i class="flaticon-little-kid"></i>
+                                        </div>
+                                        <div class="form">
+                                            <label for="nationality">Gender</label>
+                                            <select id="nationality" asp-for="customer_1.Sex" class="form-select" aria-label="Default select example">
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-grp">
+                                        <div class="icon">
+                                            <i class="flaticon-user-1"></i>
+                                        </div>
+                                        <div class="form">
+                                            <input type="text" placeholder="CCCD" asp-for="customer_1.CMND">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-grp">
+                                        <div class="icon">
+                                            <i class="flaticon-telephone-call"></i>
+                                        </div>
+                                        <div class="form">
+                                            <input type="tel" placeholder="Mobile Number *" asp-for="customer_1.Phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-grp">
+                                        <div class="icon">
+                                            <i class="flaticon-calendar"></i>
+                                        </div>
+                                        <div class="form">
+                                            <label for="shortBy">Date of Birth</label>
+                                            <input type="date"  placeholder="Select Date" asp-for="customer_1.DOB">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-grp">
+                                        <div class="icon">
+                                            <i class="flaticon-arroba"></i>
+                                        </div>
+                                        <div class="form">
+                                            <label for="email">Your Email</label>
+                                            <input type="email" id="email" placeholder="youinfo@gmail.com" asp-for="customer_1.Email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.people>=2)
+                        {
+                            <div class="primary-contact">
+                                <i class="fa-regular fa-user"></i>
+                                <h2 class="title">Passenger 2</h2>
+                            </div>
+                            <div class="booking-details-wrap">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-user-1"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="text" placeholder="Full Name" asp-for="customer_2.FullName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-little-kid"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="nationality">Gender</label>
+                                                <select id="nationality" asp-for="customer_2.Sex" class="form-select" aria-label="Default select example">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-user-1"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="text" placeholder="CCCD" asp-for="customer_2.CMND">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-telephone-call"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="tel" placeholder="Mobile Number *" asp-for="customer_2.Phone">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-calendar"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="shortBy">Date of Birth</label>
+                                                <input type="date"  placeholder="Select Date" asp-for="customer_2.DOB">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-arroba"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="email">Your Email</label>
+                                                <input type="email" id="email" placeholder="youinfo@gmail.com" asp-for="customer_2.Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                            
+
+                        @if (Model.people>=3)
+                        {
+                            <div class="primary-contact">
+                                <i class="fa-regular fa-user"></i>
+                                <h2 class="title">Passenger 3</h2>
+                            </div>
+                            <div class="booking-details-wrap">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-user-1"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="text" placeholder="Full Name" asp-for="customer_3.FullName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-little-kid"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="nationality">Gender</label>
+                                                <select id="nationality" asp-for="customer_3.Sex" class="form-select" aria-label="Default select example">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-user-1"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="text" placeholder="CCCD" asp-for="customer_3.CMND">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-telephone-call"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="tel" placeholder="Mobile Number *" asp-for="customer_3.Phone">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-calendar"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="shortBy">Date of Birth</label>
+                                                <input type="date"  placeholder="Select Date" asp-for="customer_3.DOB">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-arroba"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="email">Your Email</label>
+                                                <input type="email" id="email" placeholder="youinfo@gmail.com" asp-for="customer_3.Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                            
+
+                        @if (Model.people>=4)
+                        {
+                            <div class="primary-contact">
+                                <i class="fa-regular fa-user"></i>
+                                <h2 class="title">Passenger 4</h2>
+                            </div>
+                            <div class="booking-details-wrap">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-user-1"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="text" placeholder="Full Name" asp-for="customer_4.FullName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-little-kid"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="nationality">Gender</label>
+                                                <select id="nationality" asp-for="customer_4.Sex" class="form-select" aria-label="Default select example">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-user-1"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="text" placeholder="CCCD" asp-for="customer_4.CMND">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-telephone-call"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="tel" placeholder="Mobile Number *" asp-for="customer_4.Phone">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-calendar"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="shortBy">Date of Birth</label>
+                                                <input type="date"  placeholder="Select Date" asp-for="customer_4.DOB">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-arroba"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="email">Your Email</label>
+                                                <input type="email" id="email" placeholder="youinfo@gmail.com" asp-for="customer_4.Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                            
+                        @if (Model.people>=5)
+                        {
+                            <div class="primary-contact">
+                                <i class="fa-regular fa-user"></i>
+                                <h2 class="title">Passenger 5</h2>
+                            </div>
+                            <div class="booking-details-wrap">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-user-1"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="text" placeholder="Full Name" asp-for="customer_5.FullName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-little-kid"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="nationality">Gender</label>
+                                                <select id="nationality" asp-for="customer_5.Sex" class="form-select" aria-label="Default select example">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-user-1"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="text" placeholder="CCCD" asp-for="customer_5.CMND">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-telephone-call"></i>
+                                            </div>
+                                            <div class="form">
+                                                <input type="tel" placeholder="Mobile Number *" asp-for="customer_5.Phone">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-calendar"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="shortBy">Date of Birth</label>
+                                                <input type="date"  placeholder="Select Date" asp-for="customer_5.DOB">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <div class="icon">
+                                                <i class="flaticon-arroba"></i>
+                                            </div>
+                                            <div class="form">
+                                                <label for="email">Your Email</label>
+                                                <input type="email" id="email" placeholder="youinfo@gmail.com" asp-for="customer_5.Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        
+                    </form>
+                    
+                    
+                </div>
+                <div class="col-27">
+                    <aside class="booking-sidebar">
+                        <h2 class="main-title">Booking Info</h2>
+                        <div class="widget">
+                            <ul class="flight-info">
+                                <li><img src="assets/img/brand/@Model.ticket.Trip.AirlineCompany.Logo" alt="" style="width: 50px"> <p>@Model.ticket.Trip.StartDate.ToString("hh:mm") (VN)</p></li>
+                                <li><p>@Model.ticket.Trip.FinishDate.ToString("hh:mm") (VN) </p></li>
+                            </ul>
+                        </div>
+                        <div class="widget">
+                            <h2 class="widget-title">Your Preferred Bank</h2>
+                            <ul class="preferred-bank-wrap">
+                                <li><a href="#"><img src="assets/img/images/bank_logo01.png" alt=""></a></li>
+                                <li><a href="#"><img src="assets/img/images/bank_logo02.png" alt=""></a></li>
+                                <li><a href="#"><img src="assets/img/images/bank_logo03.png" alt=""></a></li>
+                                <li><a href="#"><img src="assets/img/images/bank_logo04.png" alt=""></a></li>
+                                <li><a href="#"><img src="assets/img/images/bank_logo05.png" alt=""></a></li>
+                                <li><a href="#"><img src="assets/img/images/bank_logo06.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="widget">
+                            <h2 class="widget-title">Your price summary</h2>
+                            <div class="price-summary-top">
+                                <ul>
+                                    <li>Details</li>
+                                    <li>Amount</li>
+                                </ul>
+                            </div>
+                            <div class="price-summary-detail">
+                                <ul>
+                                    <li>Person x @Model.people<span>@Model.ticket.Fare.Price.ToString("#,###") đ</span></li>
+                                    <li>Total Payable<span>@((Model.ticket.Fare.Price * Model.people).ToString("#,###")) đ</span></li>
+                                </ul>
+                                <button form="form-buy" class="btn">Pay now</button>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            
+        </div>
+    </div>
+</section>
+    
+    
+    <!-- booking-details-area-end -->
+
+</main>

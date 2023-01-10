@@ -1,0 +1,76 @@
+﻿@model NSC_Project.Models.Customer
+
+
+<div class="booking-details-wrap">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-grp">
+                    <div class="icon">
+                        <i class="flaticon-user-1"></i>
+                    </div>
+                    <div class="form">
+                        <input type="text" placeholder="Full Name" asp-for="FullName">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-grp">
+                    <div class="icon">
+                        <i class="flaticon-little-kid"></i>
+                    </div>
+                    <div class="form">
+                        <label for="nationality">Gender</label>
+                        <select id="nationality" asp-for="Sex" class="form-select" aria-label="Default select example">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-grp">
+                    <div class="icon">
+                        <i class="flaticon-user-1"></i>
+                    </div>
+                    <div class="form">
+                        <input type="text" placeholder="CCCD" asp-for="CMND">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-grp">
+                    <div class="icon">
+                        <i class="flaticon-telephone-call"></i>
+                    </div>
+                    <div class="form">
+                        <input type="tel" placeholder="Mobile Number *" asp-for="Phone">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-grp">
+                    <div class="icon">
+                        <i class="flaticon-calendar"></i>
+                    </div>
+                    <div class="form">
+                        <label for="shortBy">Date of Birth</label>
+                        <input type="date" class="date" placeholder="Select Date" asp-for="DOB">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-grp">
+                    <div class="icon">
+                        <i class="flaticon-arroba"></i>
+                    </div>
+                    <div class="form">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" placeholder="youinfo@gmail.com" asp-for="Email">
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

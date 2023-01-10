@@ -1,0 +1,57 @@
+﻿@model NSC_Project.Models.ViewModel.CheckoutViewModel
+
+
+<div class="booking-list-item">
+        <div class="booking-list-item-inner">
+            <div class="booking-list-top">
+                <div class="flight-airway">
+                    <div class="flight-logo">
+                        <img src="assets/img/brand/@Model.ticket.Trip.AirlineCompany.Logo" alt=""  style="width: 50px">
+                        <h5 class="title">@Model.ticket.Trip.AirlineCompany.Name</h5>
+                    </div>
+                    <span>Operated by Emirates</span>
+                </div>
+                <ul class="flight-info">
+                    <li>@Model.ticket.Trip.StartDate.DayOfWeek, <span>@Model.ticket.Trip.StartDate.ToString("dd/MM/yyyy")</span></li>
+                    <li class="time"><span>@Model.ticket.Trip.StartDate.ToString("hh:mm")</span>DAC</li>
+                <li>@((Model.ticket.Trip.FinishDate - Model.ticket.Trip.StartDate).TotalHours)h<span>1 Stops</span></li>
+                </ul>
+                <div class="flight-price">
+                    <h4 class="title">VNĐ @Model.ticket.Fare.Price</h4>
+                <form asp-action="Checkout" method="get">
+                        <input asp-for="ticket.Id" hidden/>
+                        <input asp-for="people" hidden/>
+                        <button type="submit" class="btn">Select <i class="flaticon-flight-1"></i></button>
+                </form>
+                </div>
+            </div>
+            <div class="booking-list-bottom">
+                <ul>
+                    <li class="detail"><i class="fa-solid fa-angle-down"></i> Flight Detail</li>
+                    <li>Price per person (incl. taxes &amp; fees)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="flight-detail-wrap">
+            <div class="flight-date">
+                <ul>
+                    <li>@Model.ticket.Trip.StartDate.DayOfWeek, @Model.ticket.Trip.StartDate.ToString("dd/MM/yyyy")</li>
+                    <li>@Model.ticket.Trip.StartDate.DayOfWeek, @Model.ticket.Trip.StartDate.ToString("dd/MM/yyyy") - @Model.ticket.Trip.StartDate.ToString("hh:mm") </li>
+                    <li>@Model.ticket.Trip.FinishDate.DayOfWeek, @Model.ticket.Trip.FinishDate.ToString("dd/MM/yyyy") - @Model.ticket.Trip.FinishDate.ToString("hh:mm") </li>
+                </ul>
+            </div>
+            <div class="flight-detail-right">
+                <h4 class="title">@Model.ticket.Trip.FlightRoute.AirportFrom.Address</h4>
+                <div class="flight-detail-info">
+                    <img src="assets/img/brand/@Model.ticket.Trip.AirlineCompany.Logo" alt="" style="width: 50px">
+                    <ul>
+                        <li>Tpm Line</li>
+                        <li>Operated by Airlines</li>
+                        <li>Economy | Flight EK585 | Aircraft BOEING 777-300ER</li>
+                        <li>Adult(s): 25KG luggage free</li>
+                    </ul>
+                </div>
+                <h4 class="title title-two">@Model.ticket.Trip.FlightRoute.AirportTo.Address</h4>
+            </div>
+        </div>
+    </div>
